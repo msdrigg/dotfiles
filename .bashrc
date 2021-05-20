@@ -115,23 +115,22 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Common path definitions
 export PATH="/opt/python-3.8-fast/bin:$PATH"
 export PYTHONPATH="/usr/bin/python3"
-export GTK_PATH="/usr/lib/x86_64-linux-gnu/gtk-2.0"
-alias close-cuvpn="/opt/cisco/anyconnect/bin/close_cuvpn.sh"
-alias open-cuvpn="/opt/cisco/anyconnect/bin/open_cuvpn.sh"
-export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
-export PATH=/opt/diff-so-fancy/:$PATH
-export INFOPATH=$INFOPATH:/usr/local/texlive/2020/texmf-dist/doc/info
-export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man
-alias rm=trash
-alias vim=nvim
-export PATH=~/Library/Android/sdk/tools:$PATH
-export PATH=~/Library/Android/sdk/platform-tools:$PATH
 export PATH=~/bin:$PATH
-export PATH=/opt/pycharm-2020.3.3/bin:$PATH
-export PATH=$PATH:/home/msd/Android/Sdk/platform-tools
-source "$HOME/.cargo/env"
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin
-export PATH=$PATH:~/Github/DCCAndroid/bin
+
+# Local computer-specific definitions.
+# Set these specific to each computer in ~/.bash_local
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
+
+# Common aliases
+if command -v nvim &> /dev/null
+then
+  alias vim=nvim
+fi
+alias rm=trash
+

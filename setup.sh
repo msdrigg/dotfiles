@@ -7,12 +7,17 @@ git pull origin main;
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
+		--exclude "bash_local" \
 		--exclude ".osx" \
 		--exclude "setup.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
-	source ~/.bash_profile;
+	if [ -f "./bash_local/$HOSTNAME" ]; then
+		echo "Copying local bash script from ./bash_local/$HOSTNAME"
+		cp "./bash_local/$HOSTNAME" ~/.bash_local;
+	fi
+	source ~/.profile;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
