@@ -1,4 +1,30 @@
+
+[user]
+	email = m.scott.driggers@gmail.com
+	name = Scott Driggers
+	signingkey = 62868EAF3361B42D
+
+[merge]
+	tool = vscode
+
+[mergetool "vscode"]
+cmd = code -n --wait --diff "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+#trustExitCode = false
+
+[diff]
+tool = vscode
+
+[difftool "vscode"]
+cmd = code -n --wait --diff "$REMOTE" "$LOCAL"
+
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[commit]
+	gpgsign = true
+
+[pull]
+	rebase = true
+
 [init]
-
 	defaultBranch = main
-

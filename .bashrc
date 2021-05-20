@@ -121,6 +121,7 @@ export GTK_PATH="/usr/lib/x86_64-linux-gnu/gtk-2.0"
 alias close-cuvpn="/opt/cisco/anyconnect/bin/close_cuvpn.sh"
 alias open-cuvpn="/opt/cisco/anyconnect/bin/open_cuvpn.sh"
 export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+export PATH=/opt/diff-so-fancy/:$PATH
 export INFOPATH=$INFOPATH:/usr/local/texlive/2020/texmf-dist/doc/info
 export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man
 alias rm=trash
