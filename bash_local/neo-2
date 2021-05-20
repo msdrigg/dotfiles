@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export PATH=$PATH:~/Github/DCCAndroid/bin
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+export GTK_PATH="/usr/lib/x86_64-linux-gnu/gtk-2.0"
+export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+export PATH=/opt/diff-so-fancy/:$PATH
+export INFOPATH=$INFOPATH:/usr/local/texlive/2020/texmf-dist/doc/info
+export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man
+export PATH=~/Library/Android/sdk/tools:$PATH
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
+export PATH=/opt/pycharm-2020.3.3/bin:$PATH
+export PATH=$PATH:/home/msd/Android/Sdk/platform-tools
+source "$HOME/.cargo/env"
+
+echo "Donzo baby"
