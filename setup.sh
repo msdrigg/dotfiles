@@ -8,18 +8,24 @@ function doIt() {
 	# Common aliases
 	if command -v rsync &> /dev/null
 	then
-	  alias local_setup_command=rsync;
-	else
-	  alias local_setup_command=cp;
-	fi
-	local_setup_command --exclude ".git/" \
-		--exclude ".DS_Store" \
+	  echo "Using rsync as default syncing command"
+	  rsync --exclude ".git/" \
+	  	--exclude ".DS_Store" \
 		--exclude "local" \
 		--exclude ".osx" \
 		--exclude "setup.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
+	else
+	  echo "Using cp as fallback syncing command because rsync was not found"
+	  echo "Only copying .gitconfig, .bashrc, .profile, by default"
+	  echo "Install rsync and add it to the path variable to copy everything"
+	  cp .bashrc ~
+	  cp .gitconfig ~
+	  cp .profile ~
+	fi
+
 	local BASHSCRIPT="./local/$HOSTNAME/bash_local"
 	if [ -f $BASHSCRIPT ]; then
 		echo "Copying local bash script from $BASHSCRIPT"
@@ -43,3 +49,4 @@ else
 	fi;
 fi;
 unset doIt;
+read -p "Pausing, press enter to continue"
