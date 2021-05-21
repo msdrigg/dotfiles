@@ -5,7 +5,14 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin main;
 
 function doIt() {
-	rsync --exclude ".git/" \
+	# Common aliases
+	if command -v rsync &> /dev/null
+	then
+	  alias local_setup_command=rsync;
+	else
+	  alias local_setup_command=cp;
+	fi
+	local_setup_command --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude "local" \
 		--exclude ".osx" \
