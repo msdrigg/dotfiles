@@ -1,7 +1,6 @@
 [user]
 	email = m.scott.driggers@gmail.com
 	name = Scott Driggers
-	signingkey = 62868EAF3361B42D
 
 [merge]
 	tool = vscode
