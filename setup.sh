@@ -26,7 +26,7 @@ function doIt() {
 	  cp .profile ~
 	fi
 
-	local BASHSCRIPT="./local/$HOSTNAME/bash_local"
+	local BASHSCRIPT="./local/$HOSTNAME/.bash_local"
 	if [ -f $BASHSCRIPT ]; then
 		echo "Copying local bash script from $BASHSCRIPT"
 		cp "$BASHSCRIPT" ~/.bash_local;
