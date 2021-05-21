@@ -7,15 +7,21 @@ git pull origin main;
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
-		--exclude "bash_local" \
+		--exclude "local" \
 		--exclude ".osx" \
 		--exclude "setup.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
-	if [ -f "./bash_local/$HOSTNAME" ]; then
-		echo "Copying local bash script from ./bash_local/$HOSTNAME"
-		cp "./bash_local/$HOSTNAME" ~/.bash_local;
+	local BASHSCRIPT="./local/$HOSTNAME/bash_local"
+	if [ -f $BASHSCRIPT ]; then
+		echo "Copying local bash script from $BASHSCRIPT"
+		cp "$BASHSCRIPT" ~/.bash_local;
+	fi
+	local LOCALSETUP="./local/$HOSTNAME/setup.sh"
+	if [ -f $LOCALSETUP ]; then
+		echo "Running local setup script at $LOCALSETUP"
+		source "$LOCALSETUP";
 	fi
 	source ~/.profile;
 }
