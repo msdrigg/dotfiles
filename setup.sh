@@ -47,6 +47,8 @@ function doIt() {
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
+      rsync --exclude ".DS_Store" \
+		-avh --no-perms ./local/$HOSTNAME/files/ ~;
 	else
 	  echo "Using cp as fallback syncing command because rsync was not found"
 	  echo "Only copying .gitconfig, .bashrc, .profile, by default"
@@ -54,6 +56,7 @@ function doIt() {
 	  cp .bashrc ~
 	  cp .gitconfig ~
 	  cp .profile ~
+      cp ./local/$HOSTNAME/files/ ~
 	fi
 
 	local BASHSCRIPT="./local/$HOSTNAME/.bash_local"
