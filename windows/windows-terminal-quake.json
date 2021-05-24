@@ -129,7 +129,7 @@
 	"AlwaysOnTop": false,
 
 	// When clicking or alt-tabbing away to another app, the terminal will automatically (and instantly) hide.
-	"HideOnFocusLost": true,
+	"HideOnFocusLost": false,
 
 	// For troubleshooting purposes.
 	"LogLevel": "Error",
