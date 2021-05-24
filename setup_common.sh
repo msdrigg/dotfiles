@@ -3,7 +3,7 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-# git pull origin main;
+git pull origin main;
 
 DOTFILES_HOME=$PWD
 TARGET_HOME=$1

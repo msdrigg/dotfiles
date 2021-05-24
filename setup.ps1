@@ -58,6 +58,7 @@ function Add-To-Path-Arbitrary {
 }
 
 function Setup-Path {
+	New-Item -ItemType Directory -Force -Path "~/bin" 2>&1 | out-null
 	$NonStandardPath = "~/bin"
 	Add-To-Path-Arbitrary $NonStandardPath
 
