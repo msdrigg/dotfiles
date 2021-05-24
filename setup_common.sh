@@ -3,7 +3,7 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin main;
+# git pull origin main;
 
 DOTFILES_HOME=$PWD
 TARGET_HOME=$1
@@ -34,7 +34,7 @@ if [ -f $LOCALSETUP ]; then
 	source "$LOCALSETUP";
 fi
 
-echo "Setting up path to diff-so-fancy in $TARGET_HOME/bin"
+echo "Setting up path to $DOTFILES_HOME/diff-so-fancy in $TARGET_HOME/bin"
 mkdir -p $TARGET_HOME/bin/lib
 syncDirectories "$DOTFILES_HOME/diff-so-fancy/lib" "$TARGET_HOME/bin/lib"
 cp "$DOTFILES_HOME/diff-so-fancy/diff-so-fancy" "$TARGET_HOME/bin"
