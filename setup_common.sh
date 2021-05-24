@@ -1,11 +1,13 @@
 #!/bin/bash
+set -e
+
 cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin main;
 
-DOTFILES_HOME = $PWD
-TARGET_HOME = $1
-LOCAL = $2
+DOTFILES_HOME=$PWD
+TARGET_HOME=$1
+LOCAL=$2
 
 function syncDirectories() {
 	if command -v rsync &> /dev/null; then
