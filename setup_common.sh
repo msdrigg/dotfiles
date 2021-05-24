@@ -32,7 +32,7 @@ if [ -f $LOCALSETUP ]; then
 fi
 
 echo "Setting up path to diff-so-fancy"
-mkdir $TARGET_HOME/bin/lib
+mkdir -p $TARGET_HOME/bin/lib
 syncDirectories "$DOTFILES_HOME/diff-so-fancy/lib" "$TARGET_HOME/bin/lib"
 cp "$DOTFILES_HOME/diff-so-fancy/diff-so-fancy" "$TARGET_HOME/bin"
 
