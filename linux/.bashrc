@@ -117,10 +117,10 @@ if ! shopt -oq posix; then
 fi
 
 # Common path definitions
-if [ -f "/usr/bin/python3" ]
+if [ -f /usr/bin/python3 ]; then
     export PYTHONPATH="/usr/bin/python3"
 fi
-export PATH=~/bin:$PATH
+export PATH="~/bin:$PATH"
 
 # Local computer-specific definitions.
 # Set these specific to each computer in ~/.bash_local
