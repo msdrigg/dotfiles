@@ -1,6 +1,6 @@
-callplug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 
-Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 
 call plug#end() 
