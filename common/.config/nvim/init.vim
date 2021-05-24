@@ -2,8 +2,8 @@ call plug#begin()
 
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end() 
 
