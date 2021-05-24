@@ -39,4 +39,7 @@ mkdir -p $TARGET_HOME/bin/lib
 syncDirectories "$DOTFILES_HOME/diff-so-fancy/lib" "$TARGET_HOME/bin/lib"
 cp "$DOTFILES_HOME/diff-so-fancy/diff-so-fancy" "$TARGET_HOME/bin"
 
-source $TARGET_HOME/.profile;
+if [ -f $TARGET_HOME/.profile ]; then
+	echo "Running local setup script at $LOCALSETUP"
+	source $TARGET_HOME/.profile;
+fi

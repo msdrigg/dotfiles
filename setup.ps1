@@ -4,7 +4,6 @@
 function Path-Clear-Duplicates {
     $RegKey = ([Microsoft.Win32.Registry]::LocalMachine).OpenSubKey("SYSTEM\CurrentControlSet\Control\Session Manager\Environment", $True) 
     $PathValue = $RegKey.GetValue("Path", $Null, "DoNotExpandEnvironmentNames") 
-    Write-host "Original path :" + $PathValue  
     $PathValues = $PathValue.Split(";", [System.StringSplitOptions]::RemoveEmptyEntries) 
     $IsDuplicate = $False 
     $NewValues = @() 
@@ -25,7 +24,7 @@ function Path-Clear-Duplicates {
     { 
         $NewValue = $NewValues -join ";" 
         $RegKey.SetValue("Path", $NewValue, [Microsoft.Win32.RegistryValueKind]::ExpandString) 
-        Write-Host "Duplicate PATH entry found and new PATH built removing all duplicates. New Path :" + $NewValue 
+        Write-Host "Duplicate PATH entry found and new PATH built removing all duplicates. "
     } 
     else 
     { 
