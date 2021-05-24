@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 cd "$(dirname "${BASH_SOURCE}")";
@@ -35,7 +36,9 @@ if [ -f $LOCALSETUP ]; then
 fi
 
 echo "Setting up path to $DOTFILES_HOME/diff-so-fancy in $TARGET_HOME/bin"
+
 mkdir -p $TARGET_HOME/bin/lib
+
 syncDirectories "$DOTFILES_HOME/diff-so-fancy/lib" "$TARGET_HOME/bin/lib"
 cp "$DOTFILES_HOME/diff-so-fancy/diff-so-fancy" "$TARGET_HOME/bin"
 
