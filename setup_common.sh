@@ -20,12 +20,12 @@ function syncDirectories() {
 syncDirectories $DOTFILES_HOME/common $TARGET_HOME
 syncDirectories $DOTFILES_HOME/$LOCAL $TARGET_HOME
 
-local BASHSCRIPT="$DOTFILES_HOME/local/$LOCAL/.bash_local"
+BASHSCRIPT="$DOTFILES_HOME/local/$LOCAL/.bash_local"
 if [ -f $BASHSCRIPT ]; then
 	echo "Copying local bash script from $BASHSCRIPT"
 	cp "$BASHSCRIPT" $TARGET_HOME/.bash_local;
 fi
-local LOCALSETUP="$DOTFILES_HOME/local/$LOCAL/setup.sh"
+LOCALSETUP="$DOTFILES_HOME/local/$LOCAL/setup.sh"
 if [ -f $LOCALSETUP ]; then
 	echo "Running local setup script at $LOCALSETUP"
 	source "$LOCALSETUP";
