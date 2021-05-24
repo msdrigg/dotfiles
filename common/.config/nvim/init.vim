@@ -4,6 +4,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'pprovost/vim-ps1'
 
 call plug#end() 
 
