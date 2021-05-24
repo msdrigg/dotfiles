@@ -1,28 +1,5 @@
 # Windows powershell setup script
 
-# Move files into home directory
-function Move-Home {
-	
-	[CmdletBinding()]
-	param (
-		[Parameter(Mandatory, ValueFromPipeline))]
-		$PathArgument
-	)
-
-	Process {
-		if ( (Get-Item $PathArgument) -is [System.IO.DirectoryInfo] ) {
-			# Add '-Exclude $exclude' to Get-ChildItem to exclude files
-			Get-ChildItem $PathArgument -Recurse | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)}
-		}
-		else if ( Test-Path -Path $Path -PathType Leaf ) {
-			Copy-Item -Destination $HOME $PathArgument
-		}
-		else {
-			Write-Warning "Provided path $PathArgument was not a directory or file path"
-		}
-	}
-}
-
 # Clear duplicate path variables
 function Path-Clear-Duplicates {
     $RegKey = ([Microsoft.Win32.Registry]::LocalMachine).OpenSubKey("SYSTEM\CurrentControlSet\Control\Session Manager\Environment", $True) 
@@ -61,7 +38,7 @@ function Path-Clear-Duplicates {
 function Add-To-Path-Resolved {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory, ValueFromPipeline))]
+		[Parameter(Mandatory, ValueFromPipeline)]
 		$NewPathSafe
 	)
 	Process {
@@ -73,27 +50,32 @@ function Add-To-Path-Resolved {
 }
 
 function Add-To-Path-Arbitrary {
+	[CmdletBinding()]
 	param (
+		[Parameter(Mandatory, ValueFromPipeline)]
 		$NewPathArbitrary
 	)
-	$NewArbitraryPath | Convert-Path | Add-To-Path-Resolved
+	$NewPathArbitrary | Convert-Path | Add-To-Path-Resolved
 }
 
 function Setup-Path {
-	$Non-Standard-Paths = "~/bin"
-	Add-To-Path-Arbitrary $Non-Standard-Path
+	$NonStandardPath = "~/bin"
+	Add-To-Path-Arbitrary $NonStandardPath
 
-	Path-Clear-Duplicate
+	Path-Clear-Duplicates
 }
 
 Setup-Path
 
 $nextShellPath = ".\setup_common.sh" | Convert-Path
 $shellPathWsl = "wslpath '$nextShellPath'" | wsl -d Ubuntu
-$homePathFull = "~" | ConvertPath
+$homePathFull = "~" | Convert-Path
 $homePathWsl = "wslpath '$homePathFull'" | wsl -d Ubuntu
-wsl -d Ubuntu bash "$shellPathWsl $homePathWsl windows"
+wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows
 
 git config --global user.signingKey D373CFDA7EE381FE
 
-Get-ChildItem -Path "~\.config" -Exclude "~\.config\gh\*" -Recurse | Move-Item -Destination "$env:APPDATA"
+$source = "~\.config" | Convert-Path
+$dest = $env:APPDATA
+$exclude = "~\.config\gh\*" 
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null
