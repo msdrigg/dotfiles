@@ -2,8 +2,23 @@ call plug#begin()
 
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call plug#end() 
+
+" Tailor vim-markdown plugin
+" Add markdown math
+let g:vim_markdown_math = 1
+" Add strikethrough
+let g:vim_markdown_strikethrough = 1
+
+" Setting tab width to desired
+set expandtab
+set tabstop=4 shiftwidth=4
+
+" Set autocommands like this to set tabstop and shiftwidth per file type
+autocmd Filetype css setlocal tabstop=4 shiftwidth=4
 
 
 " Sets how many lines of history VIM has to remember

@@ -1,10 +1,13 @@
 #!/bin/bash
-
 set -e
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin main;
+if ! git pull origin main ; then
+    echo "Unable to pull most recent dotfiles, exiting"
+    exit 0
+fi
+
 
 DOTFILES_HOME=$PWD
 TARGET_HOME=$1
