@@ -12,6 +12,8 @@ call plug#end()
 let g:vim_markdown_math = 1
 " Add strikethrough
 let g:vim_markdown_strikethrough = 1
+" Stop folding by default
+let g:vim_markdown_folding_disabled = 1
 
 " Setting tab width to desired
 set expandtab
