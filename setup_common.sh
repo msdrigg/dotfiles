@@ -28,7 +28,7 @@ syncDirectories $DOTFILES_HOME/$LOCAL $TARGET_HOME
 
 echo "Syncing shared folders"
 echo "Warning: Not setup yet"
-SHARED=$(cat local/linux/.shared | xargs -iXXX find shared -name "xxx")
+# SHARED=$(cat local/linux/.shared | xargs -iXXX find shared -name "xxx")
 # for OBJECT in $SHARED; do
 	# fif [ -f $OBJECT ]; then
 		# fif dir
