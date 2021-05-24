@@ -1,0 +1,1 @@
+C:\\Users\\mscot\\.bin\\WolCmd.exe B42E99AD8B63 spero.space 255.255.255.255 7777
