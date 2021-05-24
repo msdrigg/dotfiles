@@ -22,6 +22,8 @@ set tabstop=4 shiftwidth=4
 " Set autocommands like this to set tabstop and shiftwidth per file type
 autocmd Filetype css setlocal tabstop=4 shiftwidth=4
 
+" Have some extra lines after cursor
+set scrolloff=5
 
 " Sets how many lines of history VIM has to remember
 set history=500

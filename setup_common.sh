@@ -26,6 +26,15 @@ syncDirectories $DOTFILES_HOME/common $TARGET_HOME
 echo "Syncing $LOCAL folder"
 syncDirectories $DOTFILES_HOME/$LOCAL $TARGET_HOME
 
+echo "Syncing shared folders"
+echo "Warning: Not setup yet"
+SHARED=$(cat local/linux/.shared | xargs -iXXX find shared -name "xxx")
+# for OBJECT in $SHARED; do
+	# fif [ -f $OBJECT ]; then
+		# fif dir
+		# fcp 
+# done
+
 BASHSCRIPT="$DOTFILES_HOME/local/$LOCAL/.bash_local"
 if [ -f $BASHSCRIPT ]; then
 	echo "Copying local bash script from $BASHSCRIPT"

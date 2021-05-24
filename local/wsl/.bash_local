@@ -1,3 +1,5 @@
 #!/bin/bash
 
 export GPG_TTY=$(tty)
+
+export WINDOWS_HOME=$(wslpath "$(wslvar USERPROFILE)")
