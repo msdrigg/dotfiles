@@ -20,11 +20,6 @@ function syncDirectories() {
 syncDirectories $DOTFILES_HOME/common $TARGET_HOME
 syncDirectories $DOTFILES_HOME/$LOCAL $TARGET_HOME
 
-# Sync awesome vim directory into vim_runtime
-syncDirectories $DOTFILES_HOME/vimrc $TARGET_HOME/.vim_runtime
-# Run command to setup ultimate vimrc
-bash $TARGET_HOME/.vim_runtime/install_awesome_vimrc.sh;
-
 local BASHSCRIPT="$DOTFILES_HOME/local/$LOCAL/.bash_local"
 if [ -f $BASHSCRIPT ]; then
 	echo "Copying local bash script from $BASHSCRIPT"
