@@ -21,6 +21,9 @@ cmd = code -n --wait --diff "$REMOTE" "$LOCAL"
 [commit]
 	gpgsign = true
 
+[tag]
+    gpgsign = true
+
 [pull]
 	rebase = true
 
