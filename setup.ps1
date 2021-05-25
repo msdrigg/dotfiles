@@ -62,7 +62,7 @@ function Add-To-Path-Arbitrary {
 
 function Setup-Path {
     New-Item -ItemType Directory -Force -Path "~/bin" 2>&1 | out-null
-        $NonStandardPath = "~/bin"
+        $NonStandardPath = @("~\bin", "C:\Program Files\Neovim\bin")
         Add-To-Path-Arbitrary $NonStandardPath;
 
         Path-Clear-Duplicates;
@@ -78,7 +78,13 @@ wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
 git config --global user.signingKey D373CFDA7EE381FE;
 
+mkdir "$HOME\.config"
+[System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', "$HOME\.config", [System.EnvironmentVariableTarget]::Machine)
 $source = "~\.config" | Convert-Path;
 $dest = $env:APPDATA;
-$exclude = "~\.config\gh\*";
+$exclude = @("~\.config\nvim\", "~\.config\gh\*");
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
+$source = "~\.config" | Convert-Path;
+$dest = $env:APPDATA;
+$exclude = @("~\.config\nvim\", "~\.config\gh\*");
 Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
