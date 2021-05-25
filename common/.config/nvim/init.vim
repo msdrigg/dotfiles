@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pprovost/vim-ps1'
+Plug 'udalov/kotlin-vim'
 
 call plug#end() 
 
