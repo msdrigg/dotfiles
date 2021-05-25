@@ -112,3 +112,5 @@ then
 fi
 alias rm=trash
 
+# Setting vim editor
+export EDITOR=vim
