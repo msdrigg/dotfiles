@@ -17,6 +17,7 @@ cmd = code -n --wait --diff "$REMOTE" "$LOCAL"
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = nvim
 
 [commit]
 	gpgsign = true
