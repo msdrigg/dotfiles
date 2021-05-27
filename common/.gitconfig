@@ -6,24 +6,25 @@
 	tool = vscode
 
 [mergetool "vscode"]
-cmd = code -n --wait --diff "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+	cmd = code -n --wait --diff "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
 #trustExitCode = false
 
 [diff]
-tool = vscode
+	tool = vscode
 
 [difftool "vscode"]
-cmd = code -n --wait --diff "$REMOTE" "$LOCAL"
+	cmd = code -n --wait --diff "$REMOTE" "$LOCAL"
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-    editor = nvim
+	editor = nvim
+	autocrlf = true
 
 [commit]
 	gpgsign = true
 
 [tag]
-    gpgsign = true
+	gpgsign = true
 
 [pull]
 	rebase = true
