@@ -105,4 +105,6 @@ $vscode_path = "~\.config\Code\User\settings.json"
 $a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
 $a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
 $a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
+Write-Host $a
+Write-Host "Writing to $vscode_path"
 Write-Host "Done setting up";
