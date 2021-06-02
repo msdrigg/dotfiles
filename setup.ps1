@@ -77,6 +77,7 @@ else {
     Write-Host "Unable to edit 'XDG_CONFIG_HOME' because script was not run as administrator"
 }
 
+Write-Host "Running bash script"
 $nextShellPath = ".\setup_common.sh" | Convert-Path;
 $shellPathWsl = "wslpath '$nextShellPath'" | wsl -d Ubuntu;
 $homePathFull = "~" | Convert-Path;
@@ -84,7 +85,8 @@ $homePathWsl = "wslpath '$homePathFull'" | wsl -d Ubuntu;
 wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
 git config --global user.signingKey D373CFDA7EE381FE;
- 
+
+Write-Host "Copying settings from .convig to AppData if necessary"
 mkdir -Force "$HOME\.config" | Out-Null
 $source = "$HOME\.config" | Convert-Path;
 $dest = $env:APPDATA;
@@ -95,8 +97,10 @@ $dest = $env:APPDATA;
 $exclude = @("~\.config\nvim\", "~\.config\gh\*");
 Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination { Join-Path $dest $_.FullName.Substring($source.length) } 2>&1 | out-null;
 
+Write-Host "Setting up nvim path in vscode settings"
 $nvim_path = Get-Command nvim | ForEach-Object { $_.Source };
 $vscode_path = "~\.config\Code\User\settings.json"
 $a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
 $a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
 $a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
+Write-Host "Done setting up";
