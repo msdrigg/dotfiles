@@ -501,7 +501,6 @@ c.NotebookApp.port = 8888
 #  RECOMMENDED.
 #  Default: '<generated>'
 # c.NotebookApp.token = '<generate>'
-c.NotebookApp.token = ''
 
 ## Supply overrides for the tornado.web.Application that the Jupyter notebook
 #  uses.
