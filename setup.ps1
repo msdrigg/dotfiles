@@ -84,6 +84,8 @@ $homePathFull = "~" | Convert-Path;
 $homePathWsl = "wslpath '$homePathFull'" | wsl -d Ubuntu;
 wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
+Write-Host "Sleeping 1 seconds after bash execution"
+Start-Sleep -Seconds 1
 git config --global user.signingKey D373CFDA7EE381FE;
 
 Write-Host "Copying settings from .convig to AppData if necessary"
