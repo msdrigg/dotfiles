@@ -389,7 +389,7 @@ c.NotebookApp.local_hostnames = ['localhost', '0.0.0.0']
 #  module, unless it is overridden using the --browser (NotebookApp.browser)
 #  configuration option.
 #  Default: True
-# c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = False
 
 ## Hashed password to use for web authentication.
 #  
@@ -500,7 +500,8 @@ c.NotebookApp.port = 8888
 #  Setting to an empty string disables authentication altogether, which is NOT
 #  RECOMMENDED.
 #  Default: '<generated>'
-# c.NotebookApp.token = '<generated>'
+# c.NotebookApp.token = '<generate>'
+c.NotebookApp.token = ''
 
 ## Supply overrides for the tornado.web.Application that the Jupyter notebook
 #  uses.
