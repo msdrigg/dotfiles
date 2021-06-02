@@ -1,12 +1,11 @@
 # Windows powershell setup script
-function Test-Administrator  
-{  
+function Test-Administrator {  
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
     (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
 }
 
 # Clear duplicate path variables
-function Path-Clear-Duplicates {
+function Remove-Path-Duplicates {
 
     $RegKey = ([Microsoft.Win32.Registry]::LocalMachine).OpenSubKey(
         "SYSTEM\CurrentControlSet\Control\Session Manager\Environment", $True
@@ -17,26 +16,21 @@ function Path-Clear-Duplicates {
     $IsDuplicate = $False;
     $NewValues = @();
 
-    ForEach ($Value in $PathValues) 
-    { 
-        if ($NewValues -notcontains $Value) 
-        { 
+    ForEach ($Value in $PathValues) { 
+        if ($NewValues -notcontains $Value) { 
             $NewValues += $Value;
         } 
-        else 
-        { 
+        else { 
             $IsDuplicate = $True;
         } 
     } 
 
-    if ($IsDuplicate) 
-    { 
+    if ($IsDuplicate) { 
         $NewValue = $NewValues -join ";" 
-            $RegKey.SetValue("Path", $NewValue, [Microsoft.Win32.RegistryValueKind]::ExpandString) 
-            Write-Host "Duplicate PATH entry found and new PATH built removing all duplicates. ";
+        $RegKey.SetValue("Path", $NewValue, [Microsoft.Win32.RegistryValueKind]::ExpandString) 
+        Write-Host "Duplicate PATH entry found and new PATH built removing all duplicates. ";
     } 
-    else 
-    { 
+    else { 
         Write-Host "No Duplicate PATH entries found. The PATH will remain the same.";
     } 
 
@@ -66,16 +60,16 @@ function Add-To-Path-Arbitrary {
     $NewPathArbitrary | Convert-Path | Add-To-Path-Resolved;
 }
 
-function Setup-Path {
+function Update-Path {
     New-Item -ItemType Directory -Force -Path "~/bin" 2>&1 | out-null
-        $NonStandardPath = @("~\bin", "C:\Program Files\Neovim\bin")
-        Add-To-Path-Arbitrary $NonStandardPath;
+    $NonStandardPath = @("~\bin", "C:\Program Files\Neovim\bin")
+    Add-To-Path-Arbitrary $NonStandardPath;
 
-        Path-Clear-Duplicates;
+    Remove-Path-Duplicates;
 }
 
 if ( Test-Administrator ) {
-    Setup-Path;
+    Update-Path;
     [System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', "$HOME\.config", [System.EnvironmentVariableTarget]::Machine)
 }
 else {
@@ -91,18 +85,18 @@ wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
 git config --global user.signingKey D373CFDA7EE381FE;
  
-md -Force "$HOME\.config" | Out-Null
+mkdir -Force "$HOME\.config" | Out-Null
 $source = "$HOME\.config" | Convert-Path;
 $dest = $env:APPDATA;
 $exclude = @("~\.config\nvim\", "~\.config\gh\*");
-Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination { Join-Path $dest $_.FullName.Substring($source.length) } 2>&1 | out-null;
 $source = "~\.config" | Convert-Path;
 $dest = $env:APPDATA;
 $exclude = @("~\.config\nvim\", "~\.config\gh\*");
-Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination { Join-Path $dest $_.FullName.Substring($source.length) } 2>&1 | out-null;
 
-$nvim_path = Get-Command nvim | % {$_.Source};
+$nvim_path = Get-Command nvim | ForEach-Object { $_.Source };
 $vscode_path = "~\.config\Code\User\settings.json"
 $a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
-$a | % {$_."vim.neovimPath"="$nvim_path"}
-
+$a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
+$a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
