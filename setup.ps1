@@ -1,7 +1,13 @@
 # Windows powershell setup script
+function Test-Administrator  
+{  
+    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
+}
 
 # Clear duplicate path variables
 function Path-Clear-Duplicates {
+
     $RegKey = ([Microsoft.Win32.Registry]::LocalMachine).OpenSubKey(
         "SYSTEM\CurrentControlSet\Control\Session Manager\Environment", $True
     );
@@ -68,7 +74,14 @@ function Setup-Path {
         Path-Clear-Duplicates;
 }
 
-Setup-Path;
+if ( Test-Administrator ) {
+    Setup-Path;
+    [System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', "$HOME\.config", [System.EnvironmentVariableTarget]::Machine)
+}
+else {
+    Write-Host "Unable to edit path because script was not run as administrator"
+    Write-Host "Unable to edit 'XDG_CONFIG_HOME' because script was not run as administrator"
+}
 
 $nextShellPath = ".\setup_common.sh" | Convert-Path;
 $shellPathWsl = "wslpath '$nextShellPath'" | wsl -d Ubuntu;
@@ -77,14 +90,19 @@ $homePathWsl = "wslpath '$homePathFull'" | wsl -d Ubuntu;
 wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
 git config --global user.signingKey D373CFDA7EE381FE;
+ 
+md -Force "$HOME\.config" | Out-Null
+$source = "$HOME\.config" | Convert-Path;
+$dest = $env:APPDATA;
+$exclude = @("~\.config\nvim\", "~\.config\gh\*");
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
+$source = "~\.config" | Convert-Path;
+$dest = $env:APPDATA;
+$exclude = @("~\.config\nvim\", "~\.config\gh\*");
+Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
 
-mkdir "$HOME\.config"
-[System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', "$HOME\.config", [System.EnvironmentVariableTarget]::Machine)
-$source = "~\.config" | Convert-Path;
-$dest = $env:APPDATA;
-$exclude = @("~\.config\nvim\", "~\.config\gh\*");
-Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
-$source = "~\.config" | Convert-Path;
-$dest = $env:APPDATA;
-$exclude = @("~\.config\nvim\", "~\.config\gh\*");
-Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination {Join-Path $dest $_.FullName.Substring($source.length)} 2>&1 | out-null;
+$nvim_path = Get-Command nvim | % {$_.Source};
+$vscode_path = "~\.config\Code\User\settings.json"
+$a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
+$a | % {$_."vim.neovimPath"="$nvim_path"}
+

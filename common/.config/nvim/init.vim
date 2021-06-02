@@ -6,6 +6,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pprovost/vim-ps1'
 Plug 'udalov/kotlin-vim'
+Plug 'tpope/vim-commentary'
 
 call plug#end() 
 
