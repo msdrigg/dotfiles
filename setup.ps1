@@ -84,9 +84,14 @@ $homePathFull = "~" | Convert-Path;
 $homePathWsl = "wslpath '$homePathFull'" | wsl -d Ubuntu;
 wsl -d Ubuntu bash $shellPathWsl $homePathWsl windows;
 
-Write-Host "Sleeping 1 seconds after bash execution"
-Start-Sleep -Seconds 1
 git config --global user.signingKey D373CFDA7EE381FE;
+
+Write-Host "Setting up nvim path in vscode settings"
+$nvim_path = Get-Command nvim | ForEach-Object { $_.Source };
+$vscode_path = "~\.config\Code\User\settings.json"
+$a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
+$a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
+$a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
 
 Write-Host "Copying settings from .convig to AppData if necessary"
 mkdir -Force "$HOME\.config" | Out-Null
@@ -99,12 +104,4 @@ $dest = $env:APPDATA;
 $exclude = @("~\.config\nvim\", "~\.config\gh\*");
 Get-ChildItem $source -Recurse -Exclude $exclude | Copy-Item -Destination { Join-Path $dest $_.FullName.Substring($source.length) } 2>&1 | out-null;
 
-Write-Host "Setting up nvim path in vscode settings"
-$nvim_path = Get-Command nvim | ForEach-Object { $_.Source };
-$vscode_path = "~\.config\Code\User\settings.json"
-$a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
-$a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
-$a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
-Write-Host $a
-Write-Host "Writing to $vscode_path"
 Write-Host "Done setting up";
