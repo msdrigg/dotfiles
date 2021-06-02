@@ -93,7 +93,7 @@ $a = Get-Content "$vscode_path" -raw | ConvertFrom-Json
 $a | ForEach-Object { $_."vim.neovimPath" = "$nvim_path" }
 $a | ConvertTo-Json -depth 32 | set-content "$vscode_path"
 
-Write-Host "Copying settings from .convig to AppData if necessary"
+Write-Host "Copying settings from .config to AppData if necessary"
 mkdir -Force "$HOME\.config" | Out-Null
 $source = "$HOME\.config" | Convert-Path;
 $dest = $env:APPDATA;
