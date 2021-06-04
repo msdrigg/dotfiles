@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd $(dirname $BASH_SOURCE);
-
 # Get most recent tag 
 tag_name=$(git describe --abbrev=0 --tags);
 
