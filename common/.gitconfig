@@ -30,7 +30,7 @@
     co = checkout
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     cob = checkout -b
-    last = 'log -1 HEAD'
+    last = log -1 HEAD
     cm = !git add -A && git commit -m
 
 [pull]
