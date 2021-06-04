@@ -32,6 +32,7 @@
     cob = checkout -b
     last = log -1 HEAD
     cm = !git add -A && git commit -m
+    rerelease = git_re_release_local.sh
 
 [pull]
 	rebase = true
