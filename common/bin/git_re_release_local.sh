@@ -1,7 +1,20 @@
 #!/bin/bash
 
 # Get most recent tag 
-tag_name=$(git describe --abbrev=0 --tags);
+git pull --tags &> /dev/null;
+tag_name="$1";
+if [ "$tag_name" == "" ]; then
+    tag_name="$(git describe --abbrev=0 --tags 2>/dev/null)";
+    echo "Using most recent tag $tag_name";
+    if [ "$tag_name" == "" ]; then
+        echo "No tags exist. Please tag before re-releasing";
+        exit 1;
+    fi
+fi
+if ! git rev-parse $1 >/dev/null 2>&1; then
+    echo "Git tag $tag_name not found. Please enter a valid tag.";
+    exit 1;
+fi
 
 # Delete tag from remote
 git push --delete origin $tag_name &> /dev/null;
