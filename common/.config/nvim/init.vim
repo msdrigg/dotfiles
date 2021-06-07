@@ -9,7 +9,16 @@ Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 
-call plug#end() 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+call plug#end()
 
 " Tailor vim-markdown plugin
 " Add markdown math
@@ -44,20 +53,20 @@ set wildmode=longest:full,full
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -90,3 +99,19 @@ elseif has("linux")
 elseif has("unix")
     set gfn=Monospace\ 11
 endif
+
+" Clipboard settings
+" set clipboard+=unnamedplus
+
+" ALE Settings
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\   'sh': ['shfmt']
+\}
+
+let g:ale_fix_on_save = 1
+
+call deoplete#custom#option('sources', {
+\ '_': ['ale'],
+\})
+
