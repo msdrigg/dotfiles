@@ -7,6 +7,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'pprovost/vim-ps1'
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-commentary'
+Plug 'dense-analysis/ale'
 
 call plug#end() 
 
