@@ -12,6 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
+    # shellcheck source=/home/msd/.bashrc
 	. "$HOME/.bashrc"
     fi
 fi
@@ -26,5 +27,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env" 
+    # shellcheck source=/home/msd/.cargo/env
+    . "$HOME/.cargo/env" 
 fi
