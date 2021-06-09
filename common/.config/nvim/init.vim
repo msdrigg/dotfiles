@@ -16,7 +16,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
@@ -104,14 +103,26 @@ endif
 " set clipboard+=unnamedplus
 
 " ALE Settings
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+
+" let g:ale_linters = {
+"             \ 'sh': ['language_server'],
+"             \}
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
-\   'sh': ['shfmt']
+\   'sh': ['shfmt'],
+\   'python': ['black'],
+\   'javascript': ['prettier', 'eslint'],
 \}
 
-let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
 
 call deoplete#custom#option('sources', {
 \ '_': ['ale'],
 \})
+
+let g:deoplete#enable_at_startup = 1
+
+autocmd Filetype javascript setlocal tabstop=2
 
