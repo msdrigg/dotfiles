@@ -8,7 +8,10 @@ Plug 'pprovost/vim-ps1'
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
+
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
