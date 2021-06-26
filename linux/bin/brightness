@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LEVEL=$1
+
+if [ "$LEVEL" == "" ]; then
+    LEVEL="1.0"
+fi
+
+xrandr --output DP-0 --brightness $LEVEL --output DP-4 --brightness $LEVEL
