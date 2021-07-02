@@ -110,14 +110,18 @@ endif
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
-" let g:ale_linters = {
-"             \ 'sh': ['language_server'],
-"             \}
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
 \   'sh': ['shfmt'],
 \   'python': ['black'],
-\   'javascript': ['prettier', 'eslint'],
+\   'javascript': ['eslint', 'prettier'],
+\}
+
+let g:ale_linters = {
+\   '*': ['trim_whitespace'],
+\   'sh': ['shellcheck'],
+\   'python': ['pylint', 'mypy'],
+\   'javascript': ['eslint'],
 \}
 
 let g:airline#extensions#ale#enabled = 1
@@ -128,5 +132,5 @@ call deoplete#custom#option('sources', {
 
 let g:deoplete#enable_at_startup = 1
 
-autocmd Filetype javascript setlocal tabstop=2
+autocmd Filetype javascript setlocal tabstop=2 sts=2 sw=2
 
