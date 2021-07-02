@@ -122,6 +122,9 @@ let g:ale_linters = {
 \   'sh': ['shellcheck'],
 \   'python': ['pylint', 'mypy'],
 \   'javascript': ['eslint'],
+\   'markdown': [],
+\   'tex': [],
+\   'vim': [],
 \}
 
 let g:airline#extensions#ale#enabled = 1
