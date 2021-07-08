@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export PATH=$PATH:~/Github/DCCAndroid/bin
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 export PATH=$PATH:$JAVA_HOME/bin
 export GTK_PATH="/usr/lib/x86_64-linux-gnu/gtk-2.0"
 export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
