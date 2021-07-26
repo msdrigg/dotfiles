@@ -115,6 +115,8 @@ let g:ale_fixers = {
 \   'sh': ['shfmt'],
 \   'python': ['black'],
 \   'javascript': ['eslint', 'prettier'],
+\   'rust': ['rustfmt'],
+\   'markdown': [],
 \}
 
 let g:ale_linters = {
@@ -123,9 +125,16 @@ let g:ale_linters = {
 \   'python': ['pylint', 'mypy'],
 \   'javascript': ['eslint'],
 \   'markdown': [],
+\   'rust': ['analyzer'],
 \   'tex': [],
 \   'vim': [],
 \}
+
+" Setup used for working with diesel
+" let g:ale_rust_analyzer_config = {
+" \   'rust-analyzer.cargo.features': ['postgres'],
+" \   'rust-analyzer.cargo.allFeatures': 0,
+" \}
 
 let g:airline#extensions#ale#enabled = 1
 
