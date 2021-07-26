@@ -1,13 +1,14 @@
 #!/bin/bash
 set -e
 
-cd "$(dirname "${BASH_SOURCE[0]}")";
-
-if ! git pull origin main ; then
-    echo "Unable to pull most recent dotfiles, exiting"
-    exit 0
+if [ "$1" == "" ]; then
+    echo "No arguments supplied to setup_common.sh. Remember, you shouldn't be calling this directly."
+    return
 fi
 
+cd "$(dirname "${BASH_SOURCE[0]}")";
+
+git pull origin main || echo "Unable to pull most recent dotfiles, exiting" && return
 
 DOTFILES_HOME=$PWD
 TARGET_HOME=$1
