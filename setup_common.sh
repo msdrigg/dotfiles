@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")";
 
 if ! git pull origin main ; then
     echo "Unable to pull most recent dotfiles, exiting"
-    exit 1
+    exit 0
 fi
 
 
