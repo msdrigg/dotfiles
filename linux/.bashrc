@@ -114,3 +114,7 @@ alias rm=trash
 
 # Setting vim editor
 export EDITOR=nvim
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+

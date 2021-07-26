@@ -146,3 +146,4 @@ let g:deoplete#enable_at_startup = 1
 
 autocmd Filetype javascript setlocal tabstop=2 sts=2 sw=2
 
+source /usr/share/doc/fzf/examples/fzf.vim
