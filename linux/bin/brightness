@@ -2,7 +2,14 @@
 
 LEVEL=$1
 
+
 if [ "$LEVEL" == "" ]; then
+    LEVEL="1.0"
+fi
+
+LEVEL_INT=${LEVEL%.*}
+
+if [ "$LEVEL_INT" -gt "1" ]; then
     LEVEL="1.0"
 fi
 
