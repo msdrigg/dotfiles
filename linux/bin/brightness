@@ -7,10 +7,9 @@ if [ "$LEVEL" == "" ]; then
     LEVEL="1.0"
 fi
 
-LEVEL_INT=${LEVEL%.*}
-
-if [ "$LEVEL_INT" -gt "1" ]; then
-    LEVEL="1.0"
+if (( $(echo "$LEVEL > 1" |bc -l) )) || (( $(echo "$LEVEL < 0" |bc -l) )); then
+    echo "Please enter a value between 0 and 1";
+    exit 1;
 fi
 
 xrandr --output DP-0 --brightness $LEVEL --output DP-4 --brightness $LEVEL
