@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-
-GPG_TTY=$(tty)
-export GPG_TTY
-
-WINDOWS_HOME=$(wslpath "$(wslvar USERPROFILE)")
-export WINDOWS_HOME

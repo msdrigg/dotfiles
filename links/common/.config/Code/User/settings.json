@@ -28,12 +28,9 @@
       "<C-a>": false,
       "<C-f>": false
     },
-    "workbench.editorAssociations": [
-      {
-        "viewType": "jupyter.notebook.ipynb",
-        "filenamePattern": "*.ipynb"
-      }
-    ],
+    "workbench.editorAssociations": {
+      "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.startupEditor": "newUntitledFile",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,

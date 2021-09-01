@@ -1,1 +1,0 @@
-"C:\Program Files\OpenVPN\bin\openvpn-gui.exe" --connect 833VPN.ovpn

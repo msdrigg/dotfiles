@@ -4,30 +4,63 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [./local_install, Copying local files directly]
 
 - clean: ["~"]
 
 - link:
-    ~: 
-      path: links/common/**
+    ~/.config:
+      path: links/common/.config/**
       glob: true
-    ~:
-      path: links/linux/**
+      create: true
+    ~/.jupyter:
+      path: links/common/.jupyter/**
       glob: true
-      if: [ "$(uname -s)" == "Linux" ]
-    ~:
-      path: links/linux-desktop/**
+      create: true
+    ~/.gitconfig: links/common/.gitconfig
+    ~/.bash_logout:
+      if: '[ "$(uname -s)" == "Linux" ]'
+      path: links/linux/.bash_logout
+    ~/.bashrc:
+      if: '[ "$(uname -s)" == "Linux" ]'
+      path: links/linux/.bashrc
+    ~/.hushlogin:
+      if: '[ "$(uname -s)" == "Linux" ]'
+      path: links/linux/.hushlogin
+    ~/.profile:
+      if: '[ "$(uname -s)" == "Linux" ]'
+      path: links/linux/.profile
+    ~/bin/linux:
+      if: '[ "$(uname -s)" == "Linux" ]'
+      path: links/linux/bin
+      create: true
+    ~/bin/desktop:
+      if: '[ -n "$DESKTOP_SESSION" ]'
+      path: links/linux-desktop/bin
+      create: true
+    ~/.fonts:
+      if: '[ -n "$DESKTOP_SESSION" ]'
+      path: links/linux-desktop/.fonts/**
       glob: true
-      if: [ -n "$DESKTOP_SESSION" ]
-    ~:
-      path: links/wsl/**
-      glob: true
-      if: [ -n "$WSL_INTEROP" ]
-    ~:
-      path: links/windows/**
-      glob: true
-      if: "%HOMEDRIVE%"=="C:\"
+      create: true
+    ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
+      path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
+      if: '"%HOMEDRIVE%"'
     ~/bin/lib:
-      path: diff-so-fancy/lib/**
-      glob: true
+      path: diff-so-fancy/lib
+      create: true
     ~/bin/diff-so-fancy: diff-so-fancy/diff-so-fancy
+
+- crontab:
+    - time: 1 6 * * *
+      command: ~/bin/rdiffbackupdaily.sh
+      platform: linux
+    - time: 2 6 * * 3
+      command: ~/bin/rdiffbackupweekly.sh
+      platform: linux
+    - time: 2 6 1 * *
+      command: ~/bin/rdiffbackupmonthly.sh
+      platform: linux
+    - time: 2 6 2 * *
+      command: ~/bin/rdiffbackupcleanup.sh
+      platform: linux

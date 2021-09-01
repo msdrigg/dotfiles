@@ -101,6 +101,14 @@ if [ -f /usr/bin/python3 ]; then
 fi
 export PATH="$HOME/bin:$PATH"
 
+if [ -d "$HOME/bin/linux" ]; then
+    export PATH="$HOME/bin/linux:$PATH"
+fi
+
+if [ -d "$HOME/bin/desktop" ]; then
+    export PATH="$HOME/bin/desktop:$PATH"
+fi
+
 # Local computer-specific definitions.
 # Set these specific to each computer in ~/.bash_local
 if [ -f ~/.bash_local ]; then
