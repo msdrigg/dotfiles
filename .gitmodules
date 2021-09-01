@@ -1,9 +1,9 @@
 [submodule "diff-so-fancy"]
 	path = diff-so-fancy
-	url = https://github.com/so-fancy/diff-so-fancy
+	url = git@github.com:so-fancy/diff-so-fancy
 [submodule "dotbot"]
 	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+	url = git@github.com:anishathalye/dotbot
 	ignore = dirty
 [submodule "dotbot-crontab"]
 	path = dotbot-crontab
