@@ -4,63 +4,79 @@
       fallback_to_copy: true
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    - [
+        git submodule update --init --remote,
+        Updating submodules to newest versions,
+      ]
 
 - clean: ["~"]
 
 - crossplatform-link:
-    ~/.config:
-      path: links/common/.config/**
-      glob: true
-      create: true
-      force: true
-    ~/.jupyter:
-      path: links/common/.jupyter/**
-      glob: true
-      create: true
-      force: true
-    ~/.gitconfig:
-      path: links/common/.gitconfig
-      force: true
-    ~/.bash_logout:
-      path: links/linux/.bash_logout
-      force: true
-    ~/.bashrc:
-      path: links/linux/.bashrc
-    ~/.hushlogin:
-      platform: linux
-      path: links/linux/.hushlogin
-      force: true
-    ~/.profile:
-      path: links/linux/.profile
-      force: true
-    ~/bin/linux:
-      platform: linux
-      path: links/linux/bin
-      create: true
-      force: true
-    ~/bin/desktop:
-      environment: DESKTOP_SESSION
-      path: links/linux-desktop/bin
-      create: true
-      force: true
-    ~/.fonts:
-      environment: DESKTOP_SESSION
-      path: links/linux-desktop/.fonts/**
-      glob: true
-      create: true
-      force: true
-    ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
-      path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
-      force: true
-      platform: windows
-    ~/bin/lib:
-      force: true
-      path: diff-so-fancy/lib
-      create: true
-    ~/bin/diff-so-fancy:
-      path: diff-so-fancy/diff-so-fancy
-      force: true
+    - ~/.config:
+        path: links/common/.config/**
+        glob: true
+        create: true
+        force: true
+    - ~/.jupyter:
+        path: links/common/.jupyter/**
+        glob: true
+        create: true
+        force: true
+    - ~/.gitconfig:
+        path: links/common/.gitconfig
+        force: true
+    - ~/.bash_logout:
+        path: links/linux/.bash_logout
+        force: true
+    - ~/.bashrc:
+        path: links/linux/.bashrc
+    - ~/.bash_local:
+        path: local/linux/.bash_local
+        environment: "!WSL_INTEROP"
+        platform: "!win32"
+        fallback_to_copy: false
+    - ~/.bash_local:
+        path: local/wsl/.bash_local
+        environment: "WSL_INTEROP"
+        fallback_to_copy: false
+    - ~/.bash_local:
+        path: local/windows/.bash_local
+        platform: win32
+        force: true
+    - ~/.hushlogin:
+        platform: linux
+        path: links/linux/.hushlogin
+        force: true
+    - ~/.profile:
+        path: links/linux/.profile
+        force: true
+    - ~/bin/linux:
+        platform: linux
+        path: links/linux/bin
+        create: true
+        force: true
+    - ~/bin/desktop:
+        environment: DESKTOP_SESSION
+        path: links/linux-desktop/bin
+        create: true
+        force: true
+    - ~/.fonts:
+        environment: DESKTOP_SESSION
+        path: links/linux-desktop/.fonts/**
+        glob: true
+        create: true
+        force: true
+    - ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
+        path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
+        force: true
+        platform: windows
+    - ~/bin/lib:
+        force: true
+        path: diff-so-fancy/lib
+        create: true
+    - ~/bin/diff-so-fancy:
+        path: diff-so-fancy/diff-so-fancy
+        force: true
 
 - crontab:
     - time: 1 6 * * *
