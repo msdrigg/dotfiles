@@ -19,7 +19,9 @@
       glob: true
       create: true
       force: true
-    ~/.gitconfig: links/common/.gitconfig
+    ~/.gitconfig:
+      path: links/common/.gitconfig
+      force: true
     ~/.bash_logout:
       platform: linux
       path: links/linux/.bash_logout
