@@ -64,7 +64,3 @@
     - time: 2 6 2 * *
       command: ~/bin/rdiffbackupcleanup.sh
       platform: linux
-
-- platformlink:
-    - link:
-    -
