@@ -8,3 +8,6 @@
 [submodule "dotbot-crontab"]
 	path = dotbot-crontab
 	url = git@github.com:codekansas/dotbot-crontab.git
+[submodule "dotbot-crossplatform"]
+	path = dotbot-crossplatform
+	url = git@github.com:msdrigg/dotbot-crossplatform.git

@@ -42,5 +42,6 @@
     },
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "tabnine.experimentalAutoImports": true
 }
