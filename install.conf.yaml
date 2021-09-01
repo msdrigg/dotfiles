@@ -4,7 +4,6 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [./local_install, Copying local files directly]
 
 - clean: ["~"]
 
