@@ -45,7 +45,7 @@
       create: true
     ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
       path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
-      if: '"%HOMEDRIVE%"'
+      if: "[[ $(uname -s) == MINGW64_NT* ]]"
     ~/bin/lib:
       path: diff-so-fancy/lib
       create: true
@@ -64,3 +64,7 @@
     - time: 2 6 2 * *
       command: ~/bin/rdiffbackupcleanup.sh
       platform: linux
+
+- platformlink:
+    - link:
+    -
