@@ -1,13 +1,17 @@
 [submodule "diff-so-fancy"]
-	path = diff-so-fancy
-	url = git@github.com:so-fancy/diff-so-fancy
+path = diff-so-fancy
+url = git@github.com:so-fancy/diff-so-fancy
+branch = master
 [submodule "dotbot"]
-	path = dotbot
-	url = git@github.com:anishathalye/dotbot
-	ignore = dirty
+path = dotbot
+url = git@github.com:anishathalye/dotbot
+ignore = dirty
+branch = master
 [submodule "dotbot-crontab"]
-	path = dotbot-crontab
-	url = git@github.com:codekansas/dotbot-crontab.git
+path = dotbot-crontab
+url = git@github.com:codekansas/dotbot-crontab.git
+branch = master
 [submodule "dotbot-crossplatform"]
-	path = dotbot-crossplatform
-	url = git@github.com:msdrigg/dotbot-crossplatform.git
+path = dotbot-crossplatform
+url = git@github.com:msdrigg/dotbot-crossplatform.git
+branch = main
