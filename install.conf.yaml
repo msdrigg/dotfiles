@@ -1,0 +1,33 @@
+- defaults:
+    link:
+      relink: true
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
+- clean: ["~"]
+
+- link:
+    ~: 
+      path: links/common/**
+      glob: true
+    ~:
+      path: links/linux/**
+      glob: true
+      if: [ "$(uname -s)" == "Linux" ]
+    ~:
+      path: links/linux-desktop/**
+      glob: true
+      if: [ -n "$DESKTOP_SESSION" ]
+    ~:
+      path: links/wsl/**
+      glob: true
+      if: [ -n "$WSL_INTEROP" ]
+    ~:
+      path: links/windows/**
+      glob: true
+      if: "%HOMEDRIVE%"=="C:\"
+    ~/bin/lib:
+      path: diff-so-fancy/lib/**
+      glob: true
+    ~/bin/diff-so-fancy: diff-so-fancy/diff-so-fancy
