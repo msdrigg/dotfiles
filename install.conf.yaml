@@ -1,6 +1,7 @@
 - defaults:
-    link:
+    crossplatform-link:
       relink: true
+      fallback_to_copy: true
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -12,43 +13,55 @@
       path: links/common/.config/**
       glob: true
       create: true
+      force: true
     ~/.jupyter:
       path: links/common/.jupyter/**
       glob: true
       create: true
+      force: true
     ~/.gitconfig: links/common/.gitconfig
     ~/.bash_logout:
       platform: linux
       path: links/linux/.bash_logout
+      force: true
     ~/.bashrc:
       platform: linux
       path: links/linux/.bashrc
     ~/.hushlogin:
       platform: linux
       path: links/linux/.hushlogin
+      force: true
     ~/.profile:
       platform: linux
       path: links/linux/.profile
+      force: true
     ~/bin/linux:
       platform: linux
       path: links/linux/bin
       create: true
+      force: true
     ~/bin/desktop:
       environment: DESKTOP_SESSION
       path: links/linux-desktop/bin
       create: true
+      force: true
     ~/.fonts:
       environment: DESKTOP_SESSION
       path: links/linux-desktop/.fonts/**
       glob: true
       create: true
+      force: true
     ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
       path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
+      force: true
       platform: windows
     ~/bin/lib:
+      force: true
       path: diff-so-fancy/lib
       create: true
-    ~/bin/diff-so-fancy: diff-so-fancy/diff-so-fancy
+    ~/bin/diff-so-fancy:
+      path: diff-so-fancy/diff-so-fancy
+      force: true
 
 - crontab:
     - time: 1 6 * * *
