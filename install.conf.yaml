@@ -23,18 +23,15 @@
       path: links/common/.gitconfig
       force: true
     ~/.bash_logout:
-      platform: linux
       path: links/linux/.bash_logout
       force: true
     ~/.bashrc:
-      platform: linux
       path: links/linux/.bashrc
     ~/.hushlogin:
       platform: linux
       path: links/linux/.hushlogin
       force: true
     ~/.profile:
-      platform: linux
       path: links/linux/.profile
       force: true
     ~/bin/linux:
