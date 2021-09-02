@@ -34,9 +34,10 @@
         environment: DESKTOP_SESSION
         fallback_to_copy: false
         force: false
-    - ~/:
-        path: links/windows/**
+    - ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
+        path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
         platform: win32
+        glob: false
     - ~/.bash_local:
         path: local/wsl/.bash_local
         environment: "WSL_INTEROP"
