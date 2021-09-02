@@ -15,9 +15,15 @@
 - clean: ["~"]
 
 - crossplatform-link:
-    - ~/: links/common/**
-    - ~/bin/lib: diff-so-fancy/lib
-    - ~/bin/diff-so-fancy: diff-so-fancy/diff-so-fancy
+    - ~/: links/common/.**
+    - ~/.config: links/common/.config/**
+    - ~/.jupyter: links/common/.jupyter/**
+    - ~/bin/lib: 
+        path: diff-so-fancy/lib
+        glob: false
+    - ~/bin/diff-so-fancy:
+        path: diff-so-fancy/diff-so-fancy
+        glob: false
     - ~/:
         path: links/linux/**
         platform: linux
@@ -29,22 +35,25 @@
         fallback_to_copy: false
         force: false
     - ~/:
-        path: local/wsl/**
+        path: links/windows/**
+        platform: win32
+    - ~/.bash_local:
+        path: local/wsl/.bash_local
         environment: "WSL_INTEROP"
         fallback_to_copy: false
         force: false
-    - ~/:
-        path: local/linux/**
+        glob: false
+    - ~/.bash_local:
+        path: local/linux/.bash_local
         environment: "!WSL_INTEROP"
         platform: linux
         fallback_to_copy: false
         force: false
-    - ~/:
-        path: links/windows/**
+        glob: false
+    - ~/.bash_local:
+        path: local/windows/.bash_local
         platform: win32
-    - ~/:
-        path: local/windows/**
-        platform: win32
+        glob: false
 
 - crontab:
     - time: 1 6 * * *
