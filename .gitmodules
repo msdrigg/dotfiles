@@ -9,8 +9,8 @@ ignore = dirty
 branch = master
 [submodule "dotbot-crontab"]
 path = dotbot-crontab
-url = git@github.com:codekansas/dotbot-crontab.git
-branch = master
+url = git@github.com:msdrigg/dotbot-crontab.git
+branch = patch-1
 [submodule "dotbot-crossplatform"]
 path = dotbot-crossplatform
 url = git@github.com:msdrigg/dotbot-crossplatform.git
