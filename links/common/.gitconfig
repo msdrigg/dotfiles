@@ -1,7 +1,7 @@
 [user]
 	email = github@msd3.io
 	name = Scott Driggers
-	signingKey = D373CFDA7EE381FE
+	signingKey = C5B0A5DC4CBA0AA3
 
 [merge]
 	tool = vscode
