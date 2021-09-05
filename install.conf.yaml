@@ -18,7 +18,7 @@
     - ~/: links/common/.**
     - ~/.config: links/common/.config/**
     - ~/.jupyter: links/common/.jupyter/**
-    - ~/bin/lib: 
+    - ~/bin/lib:
         path: diff-so-fancy/lib
         glob: false
     - ~/bin/diff-so-fancy:
@@ -69,3 +69,9 @@
     - time: 2 6 2 * *
       command: ~/bin/rdiffbackupcleanup.sh
       platform: linux
+
+- shell:
+    - [
+        cat ~/.config/Code/User/vs_code_extensions_list.txt | xargs -n 1 code --install-extension,
+        Installing vscode extensions
+      ]
