@@ -18,8 +18,8 @@
     - ~/: links/common/.**
     - ~/.config: links/common/.config/**
     - ~/.jupyter: links/common/.jupyter/**
-    - ~/bin/lib:
-        path: diff-so-fancy/lib
+    - ~/bin/lib/DiffHighlight.pm:
+        path: diff-so-fancy/lib/DiffHighlight.pm
         glob: false
     - ~/bin/diff-so-fancy:
         path: diff-so-fancy/diff-so-fancy
@@ -27,12 +27,10 @@
     - ~/:
         path: links/linux/**
         platform: linux
-        fallback_to_copy: false
         force: false
     - ~/:
         path: links/linux-desktop/**
         environment: DESKTOP_SESSION
-        fallback_to_copy: false
         force: false
     - ~/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1:
         path: links/windows/Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1
@@ -55,6 +53,14 @@
         path: local/windows/.bash_local
         platform: win32
         glob: false
+    - ~/.config/nvim/init.vim:
+        path: links/windows/.config/nvim/init.vim
+        platform: win32
+        glob: false
+    - ~/.config/nvim/init.vim:
+        path: links/linux/.config/nvim/init.vim
+        platform: linux
+        glob: false
 
 - crontab:
     - time: 1 6 * * *
@@ -70,8 +76,8 @@
       command: ~/bin/rdiffbackupcleanup.sh
       platform: linux
 
-- shell:
-    - [
-        cat ~/.config/Code/User/vs_code_extensions_list.txt | xargs -n 1 code --install-extension,
-        Installing vscode extensions
-      ]
+# - shell:
+#     - [
+#         cat ~/.config/Code/User/vs_code_extensions_list.txt | xargs -n 1 code --install-extension,
+#         Installing vscode extensions
+#       ]
