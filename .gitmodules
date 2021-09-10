@@ -15,3 +15,7 @@ branch = patch-1
 path = dotbot-crossplatform
 url = git@github.com:msdrigg/dotbot-crossplatform.git
 branch = main
+[submodule "MonitorConfigRs"]
+path = MonitorConfigRs
+url = git@github.com:msdrigg/MonitorConfigRs
+branch = main

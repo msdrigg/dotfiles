@@ -1,5 +1,10 @@
 {
     "latex-workshop.view.pdf.viewer": "tab",
+    "remote.SSH.remotePlatform": {
+      "LocalNeo": "linux",
+      "RemoteNeo": "linux",
+      "AwsFallDetect": "linux"
+    },
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.enableNeovim": true,
     "vim.easymotion": true,
@@ -45,5 +50,8 @@
     },
     "tabnine.experimentalAutoImports": true,
     "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "settingsSync.ignoredExtensions": [
+      "ms-vscode-remote.remote-wsl"
+    ]
 }
