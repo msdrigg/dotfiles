@@ -740,7 +740,7 @@ colors:
 # in the order they were defined in.
 key_bindings:
   - { key: W,                 mods: Super,              action: Quit                  }
-  - { key: N,                 mods: Super,              action: SpawnNewInstance      }
+  - { key: N,                 mods: Control|Shift,              action: SpawnNewInstance      }
   - { key: Back,              mods: Super,              chars: "\x15"                 } # delete word/line
 
 # key_bindings:

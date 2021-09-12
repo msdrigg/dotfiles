@@ -100,7 +100,7 @@ if [ -f /usr/bin/python3 ]; then
     export PYTHONPATH="/usr/bin/python3"
 fi
 export PATH="$HOME/bin:$PATH"
-
+export PATH="$PATH:$HOME/.local/bin"
 if [ -d "$HOME/bin/linux" ]; then
     export PATH="$HOME/bin/linux:$PATH"
 fi

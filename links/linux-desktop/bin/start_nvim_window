@@ -1,0 +1,11 @@
+#!/bin/bash
+
+terminal=alacritty
+if [ $terminal == "gnome-terminal" ]; then
+	$terminal -x nvim $1
+elif [ $terminal == "alacritty" ]; then
+	$terminal -e nvim $1
+else
+	echo "Unknown terminal $terminal. Please add the command flag in the startup script."
+	$terminal -x nvim $1
+fi
