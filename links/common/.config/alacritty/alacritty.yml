@@ -175,6 +175,25 @@
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
+colors:
+  primary:
+    background: '#23272e'
+    foreground: '#abb2bf'
+  cursor:
+    text:       CellBackground
+    cursor:     '#528bff' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background: '#abb2bf' # syntax-selection-color
+  normal:
+    black:      '#3f4451' # mono-3
+    red:        '#e05561' # red 1
+    green:      '#8cc265'
+    yellow:     '#d18f52' # orange 2
+    blue:       '#4aa5f0'
+    magenta:    '#c162de'
+    cyan:       '#42b3c2'
+    white:      '#e6e6e6' # mono-2
 # Colors (Tomorrow Night)
 #colors:
   # Default colors
@@ -720,9 +739,11 @@
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: Q,                 mods: Control|Shift,              action: Quit                  }
-  - { key: W,                 mods: Control|Shift,              action: Quit                  }
-  - { key: N,                 mods: Control|Shift,              action: SpawnNewInstance      }
+  - { key: W,                 mods: Super,              action: Quit                  }
+  - { key: N,                 mods: Super,              action: SpawnNewInstance      }
+  - { key: Back,              mods: Super,              chars: "\x15"                 } # delete word/line
+
+# key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

@@ -53,5 +53,9 @@
     "telemetry.enableTelemetry": false,
     "settingsSync.ignoredExtensions": [
       "ms-vscode-remote.remote-wsl"
-    ]
+    ],
+    "[typescript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "workbench.colorTheme": "One Dark Pro Darker"
 }

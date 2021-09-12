@@ -130,3 +130,4 @@ if [ -d "$FZF_EXAMPLE_DIR" ]; then
     source $FZF_EXAMPLE_DIR/completion.bash
 fi
 . "$HOME/.cargo/env"
+export TERMINAL=alacritty
