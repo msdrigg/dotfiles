@@ -34,7 +34,7 @@
       "<C-f>": false
     },
     "workbench.editorAssociations": {
-      "*.ipynb": "jupyter.notebook.ipynb"
+      "*.ipynb": "jupyter-notebook"
     },
     "workbench.startupEditor": "newUntitledFile",
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -60,5 +60,8 @@
     "workbench.colorTheme": "One Dark Pro Darker",
     "[python]": {
       "editor.defaultFormatter": "ms-python.python"
-    }
+    },
+    "jupyter.askForKernelRestart": false,
+    "vim.neovimUseConfigFile": true,
+    "jupyter.generateSVGPlots": true
 }
