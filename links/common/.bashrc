@@ -129,7 +129,11 @@ if [ -d "$FZF_EXAMPLE_DIR" ]; then
     source $FZF_EXAMPLE_DIR/key-bindings.bash
     source $FZF_EXAMPLE_DIR/completion.bash
 fi
-. "$HOME/.cargo/env"
+
+if [ -f ~/.bash_local ]; then
+    . "$HOME/.cargo/env"
+fi
+
 export TERMINAL=alacritty
  
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
