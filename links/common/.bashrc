@@ -130,7 +130,7 @@ if [ -d "$FZF_EXAMPLE_DIR" ]; then
     source $FZF_EXAMPLE_DIR/completion.bash
 fi
 
-if [ -f ~/.bash_local ]; then
+if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
