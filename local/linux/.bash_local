@@ -11,5 +11,3 @@ export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man
 export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
 export PATH=$PATH:/home/msd/Android/Sdk/platform-tools
-
-git config --global user.signingKey C5B0A5DC4CBA0AA3

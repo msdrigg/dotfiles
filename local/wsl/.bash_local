@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 WIN_HOME_RAW="$(cmd.exe /c "<nul set /p=%UserProfile%" 2>/dev/null)"
-WINDOWS_HOME="$(wslpath $WIN_HOME_RAW)"
-
-git config --global user.signingKey 066E3C50CE724C66
+WINDOWS_HOME="$(wslpath "$WIN_HOME_RAW")"
+export WINDOWS_HOME
