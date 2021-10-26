@@ -49,10 +49,6 @@
         fallback_to_copy: false
         force: false
         glob: false
-    - ~/.bash_local:
-        path: local/windows/.bash_local
-        platform: win32
-        glob: false
     - ~/.config/nvim/init.vim:
         path: links/windows/.config/nvim/init.vim
         platform: win32
