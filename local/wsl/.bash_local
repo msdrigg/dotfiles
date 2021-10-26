@@ -2,6 +2,7 @@
 
 export GPG_TTY=$(tty)
 
-export WINDOWS_HOME=$(wslpath "$(wslvar USERPROFILE)")
+WIN_HOME_RAW="$(cmd.exe /c "<nul set /p=%UserProfile%" 2>/dev/null)"
+WINDOWS_HOME="$(wslpath $WIN_HOME_RAW)"
 
 git config --global user.signingKey 066E3C50CE724C66
