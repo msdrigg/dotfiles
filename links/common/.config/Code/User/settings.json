@@ -1,9 +1,10 @@
 {
+    "editor.bracketPairColorization.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "remote.SSH.remotePlatform": {
-      "LocalNeo": "linux",
-      "RemoteNeo": "linux",
-      "AwsFallDetect": "linux"
+        "LocalNeo": "linux",
+        "RemoteNeo": "linux",
+        "AwsFallDetect": "linux"
     },
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.enableNeovim": true,
@@ -13,55 +14,95 @@
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
-      {
-        "before": ["j", "j"],
-        "after": ["<Esc>"]
-      }
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": ["<leader>", "d"],
-        "after": ["d", "d"]
-      },
-      {
-        "before": ["<C-n>"],
-        "commands": [":nohl"]
-      }
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        }
     ],
     "vim.leader": "<space>",
     "vim.handleKeys": {
-      "<C-a>": false,
-      "<C-f>": false
+        "<C-a>": false,
+        "<C-f>": false
     },
     "workbench.editorAssociations": {
-      "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook"
     },
     "workbench.startupEditor": "newUntitledFile",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "python.formatting.provider": "black",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true
+    },
     "editor.formatOnSave": true,
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "tabnine.experimentalAutoImports": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
     "settingsSync.ignoredExtensions": [
-      "ms-vscode-remote.remote-wsl"
+        "ms-vscode-remote.remote-wsl",
+        "serayuzgur.crates"
     ],
     "[typescript]": {
-      "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "workbench.colorTheme": "One Dark Pro Darker",
     "[python]": {
-      "editor.defaultFormatter": "ms-python.python"
+        "editor.defaultFormatter": "ms-python.python"
     },
     "jupyter.askForKernelRestart": false,
     "vim.neovimUseConfigFile": true,
-    "jupyter.generateSVGPlots": true
+    "jupyter.generateSVGPlots": true,
+    "files.watcherExclude": {
+        "**/target/**": true,
+        "**/venv/**": true
+    },
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "nvim"
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.languageServer": "Pylance",
+    "redhat.telemetry.enabled": true,
+    "[rust]": {
+        "editor.defaultFormatter": "matklad.rust-analyzer"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "tabnine.disable_file_regex": [".*\\.md"],
+    "crates.listPreReleases": true,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.insidersChannel": "weekly",
+    "prettier.tabWidth": 4,
+    "markdownlint.config": {
+        "MD030": false
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

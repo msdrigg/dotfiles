@@ -741,8 +741,6 @@ colors:
 key_bindings:
   - { key: W,                 mods: Super,              action: Quit                  }
   - { key: N,                 mods: Control|Shift,      action: SpawnNewInstance      }
-  - { key: Back,              mods: Control,            chars: "\x15"                 } # delete word/line
-  - { key: Back,              mods: Super,              chars: "\x15"                 } # delete word/line
 
 # key_bindings:
   #- { key: Paste,                                       action: Paste          }

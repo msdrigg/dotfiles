@@ -9,6 +9,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
 
@@ -147,3 +148,10 @@ let g:deoplete#enable_at_startup = 1
 autocmd Filetype javascript setlocal tabstop=2 sts=2 sw=2
 
 source /usr/share/doc/fzf/examples/fzf.vim
+
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
