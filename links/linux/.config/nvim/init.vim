@@ -155,3 +155,5 @@ let g:rg_command = '
   \ -g "!{.git,node_modules,vendor}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+let g:python3_host_prog = expand('/usr/bin/python3')
