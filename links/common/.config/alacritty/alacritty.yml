@@ -22,6 +22,8 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
+env:
+  TERM: xterm-256color
 
 #window:
   # Window dimensions (changes require restart)
@@ -438,10 +440,8 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+# shell:
+  # program: /home/msd/.cargo/bin/nu
 
 # Startup directory
 #
@@ -738,9 +738,7 @@ colors:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-key_bindings:
-  - { key: W,                 mods: Super,              action: Quit                  }
-  - { key: N,                 mods: Control|Shift,      action: SpawnNewInstance      }
+
 
 # key_bindings:
   #- { key: Paste,                                       action: Paste          }
@@ -873,3 +871,7 @@ key_bindings:
 
   # Print all received window events.
   #print_events: false
+
+key_bindings:
+  - { key: W,                 mods: Super,              action: Quit                  }
+  - { key: N,                 mods: Control|Shift,      action: SpawnNewInstance      }

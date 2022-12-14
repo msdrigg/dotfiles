@@ -1,6 +1,5 @@
 {
     "editor.bracketPairColorization.enabled": true,
-    "latex-workshop.view.pdf.viewer": "tab",
     "remote.SSH.remotePlatform": {
         "LocalNeo": "linux",
         "RemoteNeo": "linux",
@@ -35,11 +34,11 @@
         "<C-f>": false
     },
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook",
+        "*.zip": "default"
     },
     "javascript.updateImportsOnFileMove.enabled": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "python.formatting.provider": "black",
     "editor.codeActionsOnSave": {
         "source.fixAll.markdownlint": true
     },
@@ -56,7 +55,7 @@
         "serayuzgur.crates"
     ],
     "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.colorTheme": "One Dark Pro Darker",
     "[python]": {
@@ -69,13 +68,15 @@
         "**/target/**": true,
         "**/venv/**": true
     },
-    "files.useExperimentalFileWatcher": true,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.profiles.linux": {},
     "terminal.integrated.localEchoExcludePrograms": [
         "vim",
         "vi",
         "nano",
         "tmux",
-        "nvim"
+        "nvim",
+        "hx"
     ],
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -83,30 +84,28 @@
     "python.languageServer": "Pylance",
     "redhat.telemetry.enabled": true,
     "[rust]": {
-        "editor.defaultFormatter": "matklad.rust-analyzer"
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "explorer.confirmDragAndDrop": false,
-    "tabnine.disable_file_regex": [".*\\.md"],
     "crates.listPreReleases": true,
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "python.insidersChannel": "weekly",
     "prettier.tabWidth": 4,
-    "markdownlint.config": {
-        "MD030": false
-    },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.wordWrap": "on",
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
     },
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "python.defaultInterpreterPath": "C:\\Users\\micro\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
     "[sql]": {
-        "editor.defaultFormatter": "mtxr.sqltools",
         "editor.formatOnSave": false
     },
     "sqltools.queryParams.enableReplace": true,
@@ -115,7 +114,7 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
+        "yaml": true,
         "plaintext": true,
         "markdown": true
     },
@@ -125,15 +124,17 @@
     "explorer.confirmDelete": false,
     "xmlTools.enforcePrettySelfClosingTagOnFormat": true,
     "xmlTools.splitXmlnsOnFormat": false,
-    "testExplorer.useNativeTesting": true,
     "sqltools.highlightQuery": false,
     "cSpell.userWords": [
         "aabbccddeeff",
         "AAFE",
+        "actix",
         "ahash",
         "appender",
         "astimezone",
+        "autoscheduler",
         "Backoff",
+        "bedstation",
         "Bedstations",
         "checkin",
         "chrono",
@@ -141,52 +142,94 @@
         "DATETIME",
         "dateutil",
         "DCCEX",
+        "dccportal",
         "dedup",
+        "deduped",
+        "Deduplicates",
         "Deque",
         "deserialization",
         "dotenv",
         "eddystone",
         "errored",
+        "Eventcalendar",
+        "Fhir",
+        "fkey",
         "Floorplan",
+        "Formik",
+        "Gantt",
         "gaussnewton",
         "Geofence",
+        "glideapps",
+        "grabmd",
+        "hmac",
+        "hotzones",
         "ibeacon",
         "indexmap",
         "inplace",
         "Internable",
         "interner",
+        "iterrows",
         "itertools",
+        "jemalloc",
+        "jemallocator",
         "Kalman",
         "locrate",
+        "luxon",
         "macaddr",
+        "medplum",
+        "memusage",
         "milli",
         "minew",
+        "mobiscroll",
+        "Mqtt",
+        "msvc",
+        "muxer",
         "ndarray",
         "ntest",
         "officedocument",
+        "oneshot",
         "openapi",
         "openxmlformats",
         "Ovidiu",
         "PKTS",
+        "pointee",
         "preprocess",
+        "psql",
+        "psycopg",
+        "quantile",
+        "rebalancing",
+        "Repr",
         "reqwest",
         "rssi",
+        "Rtls",
         "rtype",
         "Scotts",
+        "seekable",
         "SIGABRT",
+        "Smarch",
         "splitn",
         "spreadsheetml",
         "sqlx",
         "statrs",
         "STDDEV",
+        "SUPABASE",
+        "tailwindcss",
         "Tenera",
+        "texel",
         "thiserror",
         "timescaledb",
         "timestamptz",
+        "Tiviti",
+        "tiviticare",
+        "Txpower",
         "unnest",
         "unparsable",
+        "unparse",
+        "Unvalidated",
         "upsert",
         "vals",
+        "VITE",
+        "Vladan's",
         "vlines",
         "webp",
         "websockets",
@@ -197,19 +240,38 @@
         "zcount",
         "zpopmin"
     ],
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "mssql.connections": [],
-    "pgFormatter.extraFunction": "/home/msd/Github/rustls/names",
-    "pgFormatter.placeholder": "\\b\\s=>\\s\\b",
-    "pgFormatter.wrapLimit": 100,
-    "pgFormatter.pgFormatterPath": "",
-    "pgFormatter.spaces": 4,
     "update.mode": "none",
-    "kite.showWelcomeNotificationOnStartup": false,
-    "rust-analyzer.checkOnSave.extraArgs": [
-        "--all-features",
-        "--",
-        "-D",
-        "warnings"
-    ]
+    "rust-analyzer.checkOnSave.command": "check",
+    "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "svelte.enable-ts-plugin": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.formatting.provider": "black",
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "rust-analyzer.server.extraEnv": {
+        "RUSTUP_TOOLCHAIN": "stable"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "xml.server.binary.trustedHashes": [
+        "160c3a783fc8ba5cb4b00a98357069c0c8e34ce8816f4f966cee4c1515baa767"
+    ],
+    "editor.snippetSuggestions": "bottom",
+    "cSpell.overrides": [
+        {
+            "filename": "**/.env",
+            "languageId": "env"
+        },
+        {
+            "filename": "**/*.env",
+            "languageId": "env"
+        }
+    ],
+    "window.zoomLevel": 1,
+    "debug.javascript.autoAttachFilter": "smart"
 }

@@ -32,3 +32,4 @@ if [ -f "$HOME/.cargo/env" ]; then
     # shellcheck source=/home/msd/.cargo/env
     . "$HOME/.cargo/env"
 fi
+xset -dpms 2>/dev/null

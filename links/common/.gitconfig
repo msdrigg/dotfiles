@@ -44,3 +44,17 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[safe]
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/Github/rustls/runner/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/.local/share/actions-runner-rtls-ctl/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/.local/share/actions-runner-rtls-ctl/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/.local/share/actions-runner-rtls-ctl/_work/rtls-ctl/rtls-ctl
+	directory = /home/msd/.config/helix/runtime/grammars/sources/vhs
+	directory = /home/msd/.config/helix/runtime/grammars/sources/wit
+	directory = /home/msd/.config/helix/runtime/grammars/sources
+	directory = /home/msd/.config/helix/runtime/grammars/sources/

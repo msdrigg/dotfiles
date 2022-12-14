@@ -105,6 +105,7 @@ if [ -f /usr/bin/python3 ]; then
     export PYTHONPATH="/usr/bin/python3"
 fi
 export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:/home/msd/.fly/bin"
 export PATH="$PATH:$HOME/.local/bin"
 if [ -d "$HOME/bin/linux" ]; then
     export PATH="$HOME/bin/linux:$PATH"
@@ -139,6 +140,11 @@ if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
+if [ -d "/usr/local/go/bin" ]; then
+    export PATH="$PATH:/usr/local/go/bin"
+fi
+
+
 export TERMINAL=alacritty
  
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -147,3 +153,31 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="cd ~/; bfs -type d -nohidden | sed s/^\./~/"  
 
 bind -x '"\C-p": vim $(fzf);'
+
+complete -C /usr/bin/terraform terraform
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+for bin in ~/.local/share/flatpak/exports/bin/*; do
+	appid="$(basename $bin)"
+	cmd="$(flatpak info -m $appid | awk -F= '/^command=/ {print $2}')"
+	alias ${cmd}=$bin
+done
+
+reencode() {
+    ffmpeg -i "$1" -c:v libx264 -pix_fmt yuv420p -crf 22 -preset slow -c:a copy "reencoded_$1"
+}
+
+togif() {
+    ffmpeg -i "$1" \
+        -vf "fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+        -loop 0 "$1.gif"
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# See this issue. For some reason ipv6 is broken https://github.com/nodejs/node/issues/41145
+export NODE_OPTIONS=--dns-result-order=ipv4first
+export JAVA_HOME=/usr/local/android-studio/jre
